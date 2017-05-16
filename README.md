@@ -1,6 +1,6 @@
 # existsofpath
 
-Get the existing part of a given path
+Get the existing part of a given path, asynchronously.
 
 # Usage
 
