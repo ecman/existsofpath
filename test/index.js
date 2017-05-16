@@ -3,18 +3,21 @@ const path = require('path');
 const assert = require('assert');
 const existsOfPath = require('../');
 
-let existingPath = 'test';
-let partExistingPath = path.join(
-  existingPath, 'some', 'where', 'not', 'there');
+let existingPath = '';
+let partExistingPath = path.join('some', 'where', 'not', 'there');
 
 existsOfPath(partExistingPath)
   .then((resultPath) => assert
     .equal(existingPath, resultPath, 
-      `Result should be ${existingPath} not ${resultPath}`));
+      `Result should be "${existingPath}" not "${resultPath}"`))
+  .catch((err) => assert
+    .fail(null, err, 'A rejection should not have occurred'));
 
 let nonExistingPath = path.join('definitely', 'not', 'there');
 
 existsOfPath(nonExistingPath)
   .then((resultPath) => assert
     .equal('', resultPath,
-      `Result should be "" not "${resultPath}"`));
+      `Result should be "" not "${resultPath}"`))
+  .catch((err) => assert
+    .fail(null, err, 'A rejection should not have occurred'));
