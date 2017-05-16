@@ -1,0 +1,40 @@
+{
+  "name": "existsofpath",
+  "version": "1.0.0",
+  "description": "Get the existing part of a given path",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint index.js && istanbul cover test",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecman/existsofpath.git"
+  },
+  "keywords": [
+    "filepath",
+    "path",
+    "exists",
+    "existing",
+    "directory",
+    "check path",
+    "ecman"
+  ],
+  "author": "ecman <its.ec@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecman/existsofpath/issues"
+  },
+  "homepage": "https://github.com/ecman/existsofpath#readme",
+  "dependencies": {
+    "recuresolve": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=6.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "istanbul": "^0.4.5"
+  }
+}
