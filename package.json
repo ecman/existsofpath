@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/ecman/existsofpath#readme",
   "dependencies": {
-    "recuresolve": "^1.0.0"
+    "recuresolve": "^1.0.2"
   },
   "engines": {
     "node": ">=6.4.0"
