@@ -1,7 +1,7 @@
 {
   "name": "existsofpath",
   "version": "1.0.0",
-  "description": "Get the existing part of a given path",
+  "description": "Get the existing part of a given path, asynchronously",
   "main": "index.js",
   "scripts": {
     "test": "eslint index.js && istanbul cover test",
@@ -19,6 +19,8 @@
     "existing",
     "directory",
     "check path",
+    "async",
+    "asynchronous",
     "ecman"
   ],
   "author": "ecman <its.ec@outlook.com>",
