@@ -30,10 +30,9 @@
   },
   "homepage": "https://github.com/ecman/existsofpath#readme",
   "dependencies": {
-    "rectrl": "^1.0.0"
   },
   "engines": {
-    "node": ">=6.4.0"
+    "node": ">=4.0.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
