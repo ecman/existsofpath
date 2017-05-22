@@ -4,20 +4,35 @@ const assert = require('assert');
 const existsOfPath = require('../');
 
 let existingPath = '';
-let partExistingPath = path.join('some', 'where', 'not', 'there');
+let testPath = '';
+let actualPath = '';
 
-existsOfPath(partExistingPath)
-  .then((resultPath) => assert
-    .equal(existingPath, resultPath, 
-      `Result should be "${existingPath}" not "${resultPath}"`))
-  .catch((err) => assert
-    .fail(null, err, 'A rejection should not have occurred'));
+process.on('unhandledRejection', (err) => {
+  throw err;
+});
 
-let nonExistingPath = path.join('definitely', 'not', 'there');
+new Promise((resolve, reject) => {
+  existingPath = 'test';
+  testPath = path.join(existingPath, 'some', 'where', 'not', 'there');
+  resolve(testPath);
+})
+.then(existsOfPath)
+.then((resultPath) => {
+  actualPath = resultPath;
+  assert.equal(existingPath, actualPath,
+    `Result should be "${existingPath}" not "${actualPath}"`)
+  console.log(`result path: "${actualPath}" of "${testPath}" OK`);
+})
 
-existsOfPath(nonExistingPath)
-  .then((resultPath) => assert
-    .equal('', resultPath,
-      `Result should be "" not "${resultPath}"`))
-  .catch((err) => assert
-    .fail(null, err, 'A rejection should not have occurred'));
+.then(() => {
+  existingPath = '';
+  testPath = path.join('definitely', 'not', 'there');
+  return testPath;
+})
+.then(existsOfPath)
+.then((resultPath) => {
+  actualPath = resultPath;
+  assert.equal(existingPath, actualPath,
+    `Result should be "${existingPath}" not "${actualPath}"`)
+  console.log(`result path: "${actualPath}" of "${testPath}" OK`);
+})
