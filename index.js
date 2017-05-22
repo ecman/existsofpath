@@ -1,21 +1,20 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const recuresolve = require('recuresolve');
+const rectrl = require('rectrl');
 
-const existsOfPath = recuresolve(
-  (thisFn, resolve, reject, filePath) => {
+const existsOfPath = rectrl((maybe, filePath) => {
 
   fs.exists(filePath, (exists) => {
     if (
       exists ||
       filePath === ''
-    ) resolve(filePath);
+    ) maybe.resolve(filePath);
     else {
       let src = '\\'+path.sep+'?[^\\'+path.sep+']+\\'+path.sep+'?$';
 
       filePath = filePath.replace(RegExp(src), '');
-      thisFn(thisFn, resolve, reject, filePath);
+      maybe.resume(maybe, filePath);
     } 
   });
 
