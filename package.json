@@ -1,6 +1,6 @@
 {
   "name": "existsofpath",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Get the existing part of a given path, asynchronously",
   "main": "index.js",
   "scripts": {
