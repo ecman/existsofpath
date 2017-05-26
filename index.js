@@ -3,12 +3,13 @@ var fs = require('fs');
 var path = require('path');
 
 function existsOfPath(filePath) {
-  return new Promise((resolve, reject) => {
-    fs.exists(filePath, (exists) => {
+  return new Promise(function (resolve, reject) {
+    fs.exists(filePath, function (exists) {
+      var src;
       if (exists || filePath === '') {
         resolve(filePath);
       } else {
-        let src = '\\'+path.sep+'?[^\\'+path.sep+']+\\'+path.sep+'?$';
+        src = '\\'+path.sep+'?[^\\'+path.sep+']+\\'+path.sep+'?$';
         resolve(existsOfPath(filePath.replace(RegExp(src), '')));
       }
     });
